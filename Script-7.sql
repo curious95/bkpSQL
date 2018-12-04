@@ -41,7 +41,7 @@ CREATE TABLE [dbo].[bigcommerce.V1.raw]
 SELECT * FROM [bigcommerce.V1.raw];
 SELECT COUNT(*) FROM [bigcommerce.V1.raw];
 
-UPDATE [magento.V1.raw] set versions  = REPLACE(cast(versions as varchar(8000)), '|', ' | ');
+UPDATE [bigcommerce.V1.raw] set versions  = REPLACE(cast(versions as varchar(8000)), '|', ' | ');
 
 CREATE TABLE [dbo].[bigcommerce.V1.production]
 (
