@@ -38,10 +38,10 @@ CREATE TABLE [dbo].[woocommerce.V1.raw]
  [versions]                     TEXT NULL 
  );
 
-SELECT * FROM [woocommerce.V1.raw];
+SELECT TOP(100) * FROM [woocommerce.V1.raw];
 SELECT COUNT(*) FROM [woocommerce.V1.raw];
 
-UPDATE [magento.V1.raw] set versions  = REPLACE(cast(versions as varchar(8000)), '|', ' | ');
+--UPDATE [woocommerce.V1.raw] set versions  = REPLACE(cast(versions as varchar(8000)), '|', ' | ');
 
 CREATE TABLE [dbo].[woocommerce.V1.production]
 (

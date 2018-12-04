@@ -39,7 +39,8 @@ CREATE TABLE [dbo].[magento.V1.raw]
  );
 
 SELECT * FROM [magento.V1.raw];
-SELECT COUNT(*) FROM [magento.V1.raw];
+SELECT COUNT(*) FROM [magento.V1.raw];	
+--TRUNCATE TABLE [magento.V1.raw];
 
 UPDATE [magento.V1.raw] set versions  = REPLACE(cast(versions as varchar(8000)), '|', ' | ');
 
