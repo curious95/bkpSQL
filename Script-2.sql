@@ -104,6 +104,9 @@ GROUP BY
 
 --- LinkedIN sheet checkup
 
+SELECT COUNT(*) FROM [Prestashop.V3.production3];
+
+
 SELECT
 	COUNT(linkedinvalidator),
 	linkedinvalidator
@@ -124,7 +127,7 @@ from
 		[Prestashop.V3.production3]
 	WHERE
 		IsNull(country,
-		'') <> '' OR 
+		'') <> '' AND 
 		IsNull(companyName,
 		'') <> '' ) as a
 GROUP BY
