@@ -37,3 +37,7 @@ CREATE TABLE [dbo].[platforms_21.V1.raw]
  [total_versions]               DECIMAL(18,8) NULL, 
  [versions]                     TEXT NULL 
  );
+ 
+
+SELECT COUNT(*) FROM [platforms_21.V1.raw];
+
