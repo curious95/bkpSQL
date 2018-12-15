@@ -140,9 +140,9 @@ GROUP BY
 SELECT
 	COUNT(webshopchecker)
 from
-	[Prestashop.V3.production3]
+	[Prestashop.V3.production4]
 WHERE
-	webshopcheck = 'Yes';
+	webshopcheck = 'No';
 
 -- 
 --
@@ -160,12 +160,15 @@ SELECT
 	linkedinCompanyParentPage,
 	linkedinNotes
 from
-	[Prestashop.V3.production3]
+	[Prestashop.V3.production4]
 where
 	IsNull(country,
 	'') <> ''
 	OR IsNull(companyName,
 	'') <> '';
+
+SELECT COUNT(*) from [shopify.V1.production] where overallvisits > 25000;
+
 
 
 
@@ -201,5 +204,7 @@ WHERE
     dbid > 0
 GROUP BY 
     dbid, loginame;	
+   
+   SELECT COUNT(*) from [shopify.V1.production];
 
 
