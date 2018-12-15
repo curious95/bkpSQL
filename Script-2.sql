@@ -86,12 +86,17 @@ from
 	SELECT
 		*
 	from
-		[Prestashop.V3.production4]
+		[shopify.V1.production]
 	WHERE
 		IsNull(WebshopCheck,
 		'') <> '') as a
 GROUP BY
 	webshopchecker;
+
+CREATE INDEX idx_domain_shopify
+ON [shopify.V1.production](domain);
+
+SELECT COUNT(*) FROM [shopify.V1.production];
 
 
 SELECT
