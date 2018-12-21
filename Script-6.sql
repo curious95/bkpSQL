@@ -116,5 +116,6 @@ ALTER TABLE ecommercedb.dbo.[woocommerce.V1.production] ADD [webshopchecker]	VAR
 ALTER TABLE ecommercedb.dbo.[woocommerce.V1.production] ADD [linkedinvalidator]	VARCHAR(50) go
 
 
- 
+GRANT INSERT, UPDATE, SELECT ON [dbo].[woocommerce.V1.raw]TO "datajar";
+GRANT INSERT, UPDATE, SELECT ON [dbo].[woocommerce.V1.production] TO "datajar";
 

@@ -116,4 +116,5 @@ ALTER TABLE ecommercedb.dbo.[magento.V1.production] ADD [linkedinvalidator]	VARC
 
 
  
-
+GRANT INSERT, UPDATE, SELECT ON [dbo].[magento.V1.raw] TO "datajar";
+GRANT INSERT, UPDATE, SELECT ON [dbo].[magento.V1.production] TO "datajar";

@@ -109,4 +109,5 @@ ALTER TABLE ecommercedb.dbo.[thirtybees.V1.production] ADD [webshopchecker]	VARC
 ALTER TABLE ecommercedb.dbo.[thirtybees.V1.production] ADD [linkedinvalidator]	VARCHAR(50) go
 
  
-
+GRANT INSERT, UPDATE, SELECT ON [dbo].[thirtybees.V1.raw] TO "datajar";
+GRANT INSERT, UPDATE, SELECT ON [dbo].[thirtybees.V1.production] TO "datajar";

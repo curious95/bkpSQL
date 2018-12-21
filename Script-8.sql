@@ -118,3 +118,10 @@ ALTER TABLE ecommercedb.dbo.[platforms_21.V1.production] ADD [visitData.count_5]
 ALTER TABLE ecommercedb.dbo.[platforms_21.V1.production] ADD [visitData.count_6] NUMERIC(10,0)go
 ALTER TABLE ecommercedb.dbo.[platforms_21.V1.production] ADD [webshopchecker]	VARCHAR(50) go
 ALTER TABLE ecommercedb.dbo.[platforms_21.V1.production] ADD [linkedinvalidator]	VARCHAR(50) go
+
+
+SELECT COUNT(*) from [dbo].[platforms_21.V1.raw] ;
+
+GRANT INSERT, UPDATE, SELECT ON [dbo].[platforms_21.V1.raw] TO "datajar";
+GRANT INSERT, UPDATE, SELECT ON [dbo].[platforms_21.V1.production] TO "datajar";
+
