@@ -111,3 +111,7 @@ ALTER TABLE ecommercedb.dbo.[thirtybees.V1.production] ADD [linkedinvalidator]	V
  
 GRANT INSERT, UPDATE, SELECT ON [dbo].[thirtybees.V1.raw] TO "datajar";
 GRANT INSERT, UPDATE, SELECT ON [dbo].[thirtybees.V1.production] TO "datajar";
+
+
+
+SELECT COUNT(*) from [dbo].[shopify.V1.production];	
