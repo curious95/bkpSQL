@@ -147,7 +147,7 @@ SELECT
 from
 	[Prestashop.V3.production4]
 WHERE
-	webshopcheck = 'No';
+	webshopcheck = 'Yes';
 
 -- 
 --
@@ -190,7 +190,8 @@ SELECT COUNT([trafficcountry.countryName_1]), [trafficcountry.countryName_1] fro
 SELECT top(200) domain, overallvisits from  [shopify.V1.production] order by overallvisits DESC;
 
 SELECT COUNT(DISTINCT youtube) from [shopify.V1.production];
-SELECT * from [shopify.V1.production];
+SELECT * from [shopify.V1.production] WHERE country_top NOT IN ('United States','Spain');
+SELECT * from [shopify.V1.production]
 
 
 --TRUNCATE table [shopify.V1.production];
@@ -211,5 +212,9 @@ GROUP BY
     dbid, loginame;	
    
    SELECT COUNT(*) from [shopify.V1.production];
+  
+
+  
+  
 
 
