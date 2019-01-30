@@ -23,6 +23,24 @@ from
 GROUP BY
 	webshopchecker;
 
+SELECT
+	COUNT(webshopchecker),
+	webshopchecker
+from
+	(
+	SELECT
+		*
+	from
+		[shopify.V1.production]
+	WHERE
+		IsNull(WebshopCheck,
+		'') = '') as a
+GROUP BY
+	webshopchecker;
+
+
+SELECT COUNT(*) from [shopify.V1.production];
+
 --
 --
 --
@@ -107,6 +125,14 @@ from
 GROUP BY
 	webshopchecker;
 
+SELECT
+	COUNT(webshopchecker),
+	webshopchecker
+from
+	[shopify.V1.production]
+GROUP BY
+	webshopchecker;
+
 --- LinkedIN sheet checkup
 
 SELECT COUNT(*) FROM [Prestashop.V3.production3];
@@ -146,6 +172,13 @@ SELECT
 	COUNT(webshopchecker)
 from
 	[Prestashop.V3.production4]
+WHERE
+	webshopcheck = 'Yes';
+
+SELECT
+	COUNT(webshopchecker)
+from
+	[shopify.V1.production]
 WHERE
 	webshopcheck = 'Yes';
 
