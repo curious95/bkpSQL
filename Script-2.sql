@@ -38,6 +38,12 @@ from
 GROUP BY
 	webshopchecker;
 
+--- Altering URL column size
+ALTER TABLE [shopify.V1.production] ALTER COLUMN [linkedinCompanyPage] varchar(200)
+ALTER TABLE [shopify.V1.production] ADD [timestamp] NUMERIC(15,0) NULL;
+
+SELECT [timestamp],[companyname] from [shopify.V1.production] where [domain] = 'bgr-34.life';
+
 
 SELECT COUNT(*) from [shopify.V1.production];
 
