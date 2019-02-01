@@ -47,6 +47,12 @@ SELECT [timestamp],[companyname] from [shopify.V1.production] where [domain] = '
 
 SELECT COUNT(*) from [shopify.V1.production];
 
+
+UPDATE [shopify.V1.production] SET [timestamp] = 1549023799506;
+
+
+WHERE condition;
+
 --
 --
 --
@@ -202,9 +208,10 @@ SELECT
 	companyName,
 	linkedinCompanyPage,
 	linkedinCompanyParentPage,
-	linkedinNotes
+	linkedinNotes,
+	timestamp
 from
-	[Prestashop.V3.production4]
+	[shopify.V1.production]
 where
 	IsNull(country,
 	'') <> ''
