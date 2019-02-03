@@ -42,13 +42,12 @@ GROUP BY
 ALTER TABLE [shopify.V1.production] ALTER COLUMN [linkedinCompanyPage] varchar(200)
 ALTER TABLE [shopify.V1.production] ADD [timestamp] NUMERIC(15,0) NULL;
 
-SELECT [timestamp],[companyname] from [shopify.V1.production] where [domain] = 'bgr-34.life';
-
+SELECT [timestamp],[companyname],[webshopchecker] from [shopify.V1.production] where [domain] = 'bgr-34.life';
+UPDATE [shopify.V1.production] SET [companyname] = '' WHERE [domain] = 'bgr-34.life';
 
 SELECT COUNT(*) from [shopify.V1.production];
 
 
-UPDATE [shopify.V1.production] SET [timestamp] = 1549023799506;
 
 
 WHERE condition;
