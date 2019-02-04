@@ -122,6 +122,14 @@ from
 GROUP BY
 	webshopchecker;
 
+
+
+--UPDATE [shopify.V1.production] set webshopchecker='' WHERE IsNull(WebshopCheck,'') = '';
+--UPDATE [shopify.V1.production] set linkedinvalidator='' WHERE IsNull(country,'') = '' AND IsNull(companyName,'') = '';
+
+
+
+
 CREATE INDEX idx_domain_shopify
 ON [shopify.V1.production](domain);
 
@@ -174,6 +182,30 @@ from
 		'') <> '' ) as a
 GROUP BY
 	linkedinvalidator;
+
+
+
+
+
+-- nullifying
+
+SELECT
+	COUNT(linkedinvalidator),
+	linkedinvalidator
+from
+	(
+	SELECT
+		*
+	from
+		[shopify.V1.production]
+	WHERE
+		IsNull(country,
+		'') <> '' AND 
+		IsNull(companyName,
+		'') <> '' ) as a
+GROUP BY
+	linkedinvalidator;
+
 
 --
 --
