@@ -119,3 +119,28 @@ ALTER TABLE ecommercedb.dbo.[woocommerce.V1.production] ADD [linkedinvalidator]	
 GRANT INSERT, UPDATE, SELECT ON [dbo].[woocommerce.V1.raw]TO "datajar";
 GRANT INSERT, UPDATE, SELECT ON [dbo].[woocommerce.V1.production] TO "datajar";
 
+
+
+
+-- Alter table to add version column
+ALTER TABLE ecommercedb.dbo.[Prestashop.V3.production3] ADD [platform]	VARCHAR(50) go
+ALTER TABLE ecommercedb.dbo.[Prestashop.V3.production4] ADD [platform]	VARCHAR(50) go
+ALTER TABLE ecommercedb.dbo.[bigcommerce.V1.production] ADD [platform]	VARCHAR(50) go
+ALTER TABLE ecommercedb.dbo.[magento.V1.production] ADD [platform]	VARCHAR(50) go
+ALTER TABLE ecommercedb.dbo.[platforms_21.V1.production] ADD [platform]	VARCHAR(50) go
+ALTER TABLE ecommercedb.dbo.[shopify.V1.production] ADD [platform]	VARCHAR(50) go
+ALTER TABLE ecommercedb.dbo.[thirtybees.V1.production] ADD [platform]	VARCHAR(50) go
+ALTER TABLE ecommercedb.dbo.[woocommerce.V1.production] ADD [platform]	VARCHAR(50) go
+
+
+
+
+
+-- Update table
+
+
+
+
+
+
+
