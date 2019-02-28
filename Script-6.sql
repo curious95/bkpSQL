@@ -128,10 +128,20 @@ ALTER TABLE ecommercedb.dbo.[Prestashop.V3.production3] ADD [platform]	VARCHAR(5
 ALTER TABLE ecommercedb.dbo.[Prestashop.V3.production4] ADD [platform]	VARCHAR(50) go
 ALTER TABLE ecommercedb.dbo.[bigcommerce.V1.production] ADD [platform]	VARCHAR(50) go
 ALTER TABLE ecommercedb.dbo.[magento.V1.production] ADD [platform]	VARCHAR(50) go
-ALTER TABLE ecommercedb.dbo.[platforms_21.V1.production] ADD [platform]	VARCHAR(50) go
+ALTER TABLE ecommercedb.dbo.[platforms_21.V1.production2] ADD [platform]	VARCHAR(50) go
 ALTER TABLE ecommercedb.dbo.[shopify.V1.production] ADD [platform]	VARCHAR(50) go
 ALTER TABLE ecommercedb.dbo.[thirtybees.V1.production] ADD [platform]	VARCHAR(50) go
 ALTER TABLE ecommercedb.dbo.[woocommerce.V1.production] ADD [platform]	VARCHAR(50) go
+
+-- Alter table to add timestamp column
+ALTER TABLE ecommercedb.dbo.[Prestashop.V3.production3] ADD [timestamp]	NUMERIC(20,0) go
+ALTER TABLE ecommercedb.dbo.[Prestashop.V3.production4] ADD [timestamp]	NUMERIC(20,0) go
+ALTER TABLE ecommercedb.dbo.[bigcommerce.V1.production] ADD [timestamp]	NUMERIC(20,0) go
+ALTER TABLE ecommercedb.dbo.[magento.V1.production] ADD [timestamp]	NUMERIC(20,0) go
+ALTER TABLE ecommercedb.dbo.[platforms_21.V1.production2] ADD [timestamp]	NUMERIC(20,0) go
+ALTER TABLE ecommercedb.dbo.[shopify.V1.production] ADD [timestamp]	NUMERIC(20,0) go
+ALTER TABLE ecommercedb.dbo.[thirtybees.V1.production] ADD [timestamp]	NUMERIC(20,0) go
+ALTER TABLE ecommercedb.dbo.[woocommerce.V1.production] ADD [timestamp]	NUMERIC(20,0) go
 
 
 
@@ -142,12 +152,90 @@ UPDATE ecommercedb.dbo.[Prestashop.V3.production3] SET [platform] = 'Prestashop'
 UPDATE ecommercedb.dbo.[Prestashop.V3.production4] SET [platform] = 'Prestashop';
 UPDATE ecommercedb.dbo.[bigcommerce.V1.production] SET [platform] = 'BigCommerce';
 UPDATE ecommercedb.dbo.[magento.V1.production] SET [platform] = 'Magento';
---UPDATE ecommercedb.dbo.[platforms_21.V1.production] SET [platform] = 'BigCommerce';
+UPDATE ecommercedb.dbo.[platforms_21.V1.production2] SET [platform] = [versions];
 UPDATE ecommercedb.dbo.[shopify.V1.production] SET [platform] = 'Shopify';
 UPDATE ecommercedb.dbo.[thirtybees.V1.production] SET [platform] = 'Thirtybees';
 UPDATE ecommercedb.dbo.[woocommerce.V1.production] SET [platform] = 'Woocommerce';
 
 
+-- Platform_21 
+
+SELECT COUNT(*) from ecommercedb.dbo.[eComTableau];
+
+
+SELECT a.*, b.[versions]
+from ecommercedb.dbo.[platforms_21.V1.production] as a
+LEFT JOIN ecommercedb.dbo.[platforms_21.V1.raw] as b
+ON a.[domain] = b.[domain];
+
+ 
+SELECT * INTO [platforms_21.V1.production2]
+FROM (
+SELECT a.*, b.[versions]
+from ecommercedb.dbo.[platforms_21.V1.production] as a
+LEFT JOIN ecommercedb.dbo.[platforms_21.V1.raw] as b
+ON a.[domain] = b.[domain]
+) as table2;
+
+
+UPDATE [platforms_21.V1.production2] set platform  = [versions];
+
+
+UPDATE [platforms_21.V1.production2] set platform  = REPLACE(cast(platform as varchar(8000)), '| ', '');
+
+UPDATE [platforms_21.V1.production2] set platform  = SUBSTRING(platform,CHARINDEX('|',platform),LEN(platform)+1);
+
+
+select SUBSTRING(platform,CHARINDEX('|',platform),LEN(platform)) from [platforms_21.V1.production2];
+
+
+-- Merging tables
+SELECT * INTO [eComTableau]
+FROM (
+SELECT * FROM [Prestashop.V3.production3]
+UNION ALL
+SELECT * FROM [Prestashop.V3.production4]
+UNION ALL
+SELECT * FROM [bigcommerce.V1.production]
+UNION ALL
+SELECT * FROM [magento.V1.production]
+UNION ALL
+SELECT * FROM [platforms_21.V1.production2]
+UNION ALL
+SELECT * FROM [thirtybees.V1.production]
+UNION ALL
+SELECT * FROM [woocommerce.V1.production]
+) as mergedTable;
+
+
+
+SELECT * FROM [platforms_21.V1.production2]
+UNION ALL
+SELECT * FROM [shopify.V1.production];
+
+SELECT TOP(10) * FROM [Prestashop.V3.production3]
+UNION ALL
+SELECT * FROM [Prestashop.V3.production4]
+UNION ALL
+SELECT TOP(10) * FROM [bigcommerce.V1.production]
+UNION ALL
+SELECT TOP(10) * FROM [magento.V1.production]
+UNION ALL
+SELECT TOP(10) * FROM [platforms_21.V1.production2];
+
+-- Renaming cols
+EXEC sp_rename '[shopify.V1.production].facebook_', 'facebook', 'COLUMN';
+EXEC sp_rename '[shopify.V1.production].linkedin_', 'linkedin', 'COLUMN';
+EXEC sp_rename '[shopify.V1.production].reddit_', 'reddit', 'COLUMN';
+EXEC sp_rename '[shopify.V1.production].whatsapp_', 'whatsapp', 'COLUMN';
+EXEC sp_rename '[shopify.V1.production].vk_', 'vk', 'COLUMN';
+EXEC sp_rename '[shopify.V1.production].quora_', 'quora', 'COLUMN';
+EXEC sp_rename '[shopify.V1.production].youtube_', 'youtube', 'COLUMN';
+EXEC sp_rename '[shopify.V1.production].pinterest_', 'pinterest', 'COLUMN';
+
+
+
+SELECT DISTINCT platform from ecommercedb.dbo.[eComTableau];
 
 
 
