@@ -44,7 +44,8 @@ SELECT COUNT(*) FROM [woocommerce.V1.raw];
 SELECT TOP(10) * FROM [woocommerce.V1.raw] where total_versions >= 2.0; 
 
 
-UPDATE [woocommerce.V1.raw] set versions  = REPLACE(cast(versions as varchar(8000)), '.csv', '');
+UPDATE [magento.V1.raw] set versions  = REPLACE(cast(versions as varchar(8000)), '.csv', '');
+
 
 CREATE TABLE [dbo].[woocommerce.V1.production]
 (
