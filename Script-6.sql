@@ -137,6 +137,14 @@ ALTER TABLE ecommercedb.dbo.[woocommerce.V1.production] ADD [platform]	VARCHAR(5
 
 
 -- Update table
+UPDATE ecommercedb.dbo.[Prestashop.V3.production3] SET [platform] = 'Prestashop';
+UPDATE ecommercedb.dbo.[Prestashop.V3.production4] SET [platform] = 'Prestashop';
+UPDATE ecommercedb.dbo.[bigcommerce.V1.production] SET [platform] = 'BigCommerce';
+UPDATE ecommercedb.dbo.[magento.V1.production] SET [platform] = 'Magento';
+--UPDATE ecommercedb.dbo.[platforms_21.V1.production] SET [platform] = 'BigCommerce';
+UPDATE ecommercedb.dbo.[shopify.V1.production] SET [platform] = 'Shopify';
+UPDATE ecommercedb.dbo.[thirtybees.V1.production] SET [platform] = 'Thirtybees';
+UPDATE ecommercedb.dbo.[woocommerce.V1.production] SET [platform] = 'Woocommerce';
 
 
 
